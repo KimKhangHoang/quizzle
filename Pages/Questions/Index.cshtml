@@ -1,0 +1,38 @@
+@page
+@model Quizzle.Pages.Questions.IndexModel
+@{
+    ViewData["Title"] = "Manage Questions";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Manage Questions</h1>
+    <p><a class="btn btn-primary" asp-page="./Create">Create new question</a></p>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Order</th>
+                <th>Question</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Questions != null)
+            {
+                var questionList = Model.Questions.ToList();
+                
+                @for (var i = 0; i < questionList.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@questionList[i].QuestionText</td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@questionList[i].Id" class="btn btn-warning">Edit</a>
+                            <a asp-page="./Delete" asp-route-id="@questionList[i].Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

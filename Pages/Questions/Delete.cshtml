@@ -1,0 +1,28 @@
+@page "{id:guid}"
+@model Quizzle.Pages.Questions.DeleteModel
+@{
+    ViewData["Title"] = "Delete Question";
+}
+
+<div>
+    <h1>Delete Question</h1>
+
+    <p><strong>Are you sure you want to delete this question?</strong></p>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                Question Text
+            </dt>
+            <dd class="col-sm-10">
+                @Model.Question?.QuestionText
+            </dd>
+        </dl>
+    </div>
+
+    <form method="post">
+        <input type="hidden" value="@Model.Question?.Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

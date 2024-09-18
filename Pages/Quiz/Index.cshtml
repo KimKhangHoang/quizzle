@@ -1,0 +1,37 @@
+@page
+@model Quizzle.Pages.Quiz.IndexModel
+@{
+    ViewData["Title"] = "Take Quiz";
+}
+
+<div>
+    <h1 class="display-4 text-center">Take Quiz</h1>
+
+    <form method="post">
+        @for (var i = 0; i < Model.Questions.Count(); i++)
+    {
+        var question = Model.Questions.ElementAt(i);
+        <div class="form-group">
+            <label>@(i + 1)) @question.QuestionText</label>
+
+            <div>
+                <input type="radio" id="optionA_@question.Id" name="answers[@question.Id]" value="A" />
+                <label for="optionA">A. @question.OptionA</label>
+            </div>
+            <div>
+                <input type="radio" id="optionB_@question.Id" name="answers[@question.Id]" value="B" />
+                <label for="optionB">B. @question.OptionB</label>
+            </div>
+            <div>
+                <input type="radio" id="optionC_@question.Id" name="answers[@question.Id]" value="C" />
+                <label for="optionC">C. @question.OptionC</label>
+            </div>
+            <div>
+                <input type="radio" id="optionD_@question.Id" name="answers[@question.Id]" value="D" />
+                <label for="optionD">D. @question.OptionD</label>
+            </div>
+        </div>
+    }
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
