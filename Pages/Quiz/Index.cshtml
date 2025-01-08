@@ -1,0 +1,49 @@
+@page
+@model Quizzle.Pages.Quiz.IndexModel
+@{
+    ViewData["Title"] = "Take Quiz";
+}
+
+<div class="quiz-page">
+    <h1 class="text-center mt-1">Take Quiz</h1>
+
+    <div class="timer-box mt-4">
+        <p>Time Remaining: <span id="timer">01:00</span></p>
+    </div>
+
+    <form method="post">
+        @for (var i = 0; i < Model.Questions.Count(); i++)
+    {
+        var question = Model.Questions.ElementAt(i);
+        <div class="form-group mt-4">
+            <label>(@(i + 1)) @question.QuestionText?</label>
+
+            <div class="form-check mt-2 options">
+                <input type="radio" id="optionA_@question.Id" name="answers[@question.Id.ToString()]" value="A" />
+                <label for="optionA_@question.Id">A. @question.OptionA</label>
+            </div>
+            <div class="form-check mt-1 options">
+                <input type="radio" id="optionB_@question.Id" name="answers[@question.Id.ToString()]" value="B" />
+                <label for="optionB_@question.Id">B. @question.OptionB</label>
+            </div>
+            <div class="form-check mt-1 options">
+                <input type="radio" id="optionC_@question.Id" name="answers[@question.Id.ToString()]" value="C" />
+                <label for="optionC_@question.Id">C. @question.OptionC</label>
+            </div>
+            <div class="form-check mt-1 options">
+                <input type="radio" id="optionD_@question.Id" name="answers[@question.Id.ToString()]" value="D" />
+                <label for="optionD_@question.Id">D. @question.OptionD</label>
+            </div>
+        </div>
+    }
+    <button type="submit" class="btn btn-success mt-4">Submit</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Initialize the quiz timer with a duration of 1 minute
+        initializeQuizTimer(1, "#quizForm", "#timer", "button[type='submit']");
+    </script>
+}

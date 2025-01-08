@@ -1,0 +1,18 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Homepage";
+}
+
+<div class="homepage">
+    <div class="content-box">
+        <h1 class="display-4 welcome-text">Welcome to <span class="brand">Quizzle</span> 🎉</h1>
+        <p class="lead">Start creating quizzes, testing your knowledge, or checking your scores. Enjoy learning while having fun!</p>
+        
+        <div class="button-group">
+            <a class="btn btn-primary btn-lg me-1 mw-1" href="/Questions/Index">Manage Questions</a>
+            <a class="btn btn-warning btn-lg me-1 mw-1" href="/Quiz/Index">Take a Quiz</a>
+            <a class="btn btn-success btn-lg me-1 mw-1" href="/Scores/Index">View Scores</a>
+        </div>
+    </div>
+</div>

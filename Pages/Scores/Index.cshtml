@@ -1,0 +1,14 @@
+@page
+@model Quizzle.Pages.Scores.IndexModel
+@{
+    ViewData["Title"] = "Scores";
+}
+
+<div class="score-container">
+    <h1 class="display-4">🏆 Congratulations! 🏆</h1>
+    <div class="score-box">
+        <p class="score-text">Your Score:</p>
+        <p class="score-value">@Model.Score / @Model.TotalQuestions</p>
+    </div>
+    <button class="btn btn-primary mt-4" onclick="window.location.href='/Quiz';">Play Again</button>
+</div>

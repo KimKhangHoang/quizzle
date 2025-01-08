@@ -1,0 +1,67 @@
+@page "{id:guid}"
+@model Quizzle.Pages.Questions.EditModel
+@{
+    ViewData["Title"] = "Edit Question";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-warning text-white">
+            <h2 class="text-center text-dark">Edit Question</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" name="Question.Id" value="@Model.Question.Id" />
+
+                <div class="mb-4">
+                    <label for="questionText" class="form-label text-muted">Question Text</label>
+                    <textarea id="questionText" name="Question.QuestionText" class="form-control" rows="3" placeholder="Edit the question text" required>@Model.Question.QuestionText</textarea>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label text-muted">Options</label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">A</span>
+                        <input type="text" id="optionA" name="Question.OptionA" class="form-control" placeholder="Option A" value="@Model.Question.OptionA" required>
+                    </div>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">B</span>
+                        <input type="text" id="optionB" name="Question.OptionB" class="form-control" placeholder="Option B" value="@Model.Question.OptionB" required>
+                    </div>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">C</span>
+                        <input type="text" id="optionC" name="Question.OptionC" class="form-control" placeholder="Option C" value="@Model.Question.OptionC" required>
+                    </div>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">D</span>
+                        <input type="text" id="optionD" name="Question.OptionD" class="form-control" placeholder="Option D" value="@Model.Question.OptionD" required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="answer" class="form-label text-muted">Correct Answer</label>
+                    <select id="answer" name="Question.Answer" class="form-select" required>
+                        <option value="" disabled>Select the correct answer</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-warning btn-lg me-2">Save Changes</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="window.history.back()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Get and select the previously selected answer
+    var selectedAnswer = '@Model.Question.Answer';
+    if (selectedAnswer) {
+        document.getElementById("answer").value = selectedAnswer;
+    }
+</script>

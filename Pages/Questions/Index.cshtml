@@ -1,0 +1,42 @@
+@page
+@model Quizzle.Pages.Questions.IndexModel
+@{
+    ViewData["Title"] = "Manage Questions";
+}
+
+<div class="manage-questions">
+    <h1>Manage Questions</h1>
+    <a class="btn btn-success create-btn mt-4" asp-page="./Create">✚ Create New Question</a>
+
+    @if (Model.Questions != null && Model.Questions.Any())
+    {
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var (question, index) in Model.Questions.Select((q, i) => (q, i)))
+                {
+                    <tr>
+                        <td>@(index + 1)</td>
+                        <td>@question.QuestionText</td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@question.Id" class="btn btn-warning">🛠 Edit</a>
+                            <a asp-page="./Delete" asp-route-id="@question.Id" class="btn btn-danger">🗑 Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div>
+            <p>No questions found. Click the button above to add your first question.</p>
+        </div>
+    }
+</div>
