@@ -4,6 +4,8 @@ A quiz app built with ASP.NET Core Razor Pages. Write and edit multiple-choice q
 
 ![Taking a quiz with two questions answered and 53 seconds left on the timer](docs/screenshot.webp)
 
+[Watch the demo video](https://drive.google.com/file/d/1mG0IbPAakkFdtfRh-KAKgr1byui-G8CF/view) (about a minute).
+
 ## Features
 
 - Create, edit and delete multiple-choice questions, each with four options and one correct answer. Deleting asks for confirmation.
